@@ -4,9 +4,8 @@ import { Row, Col, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import DropDown from './DropDown';
-const StudentMainPage = ({ data, tag }) => {
+const StudentMainPage = ({ data, tag, handleChange, handleKeyPress }) => {
 	const [isHidden, setIsHidden] = useState(true);
-
 	function getAvg(grades) {
 		let total = 0,
 			integer,
@@ -25,11 +24,11 @@ const StudentMainPage = ({ data, tag }) => {
 	return (
 		<div className='student-main-page '>
 			<Row className='student-img-row'>
-				<Col className='student-icon col-sm-4'>
+				<Col className='student-icon col-sm-3'>
 					<img src={`${data.pic}`} alt='student-icon' />
 				</Col>
 
-				<Col className='student-data col-sm-6'>
+				<Col className='student-data col-sm-8'>
 					<div className='information'>
 						<h1 className='header_name'>
 							{data.firstName} &nbsp;
@@ -44,7 +43,7 @@ const StudentMainPage = ({ data, tag }) => {
 					</div>
 				</Col>
 
-				<Col className='col-sm-2'>
+				<Col className='col-sm-1'>
 					<span>
 						<Button
 							className='expand-btn'
@@ -59,8 +58,13 @@ const StudentMainPage = ({ data, tag }) => {
 					</span>
 				</Col>
 				{isHidden ? null : (
-					<Row>
-						<DropDown student={data} tag={tag} />
+					<Row xs={6}>
+						<DropDown
+							student={data}
+							tag={tag}
+							handleChange={handleChange}
+							handleKeyPress={handleKeyPress}
+						/>
 					</Row>
 				)}
 			</Row>

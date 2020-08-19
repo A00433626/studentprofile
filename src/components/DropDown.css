@@ -9,10 +9,16 @@
 .add-button {
 	display: flex;
 }
-.add-tag-input {
+.add-tag-button {
 	background-color: rgba(237, 237, 237);
 	color: black;
-	border: none;
-	margin-top: 10px;
+	border: none !important;
+	margin-top: 10px !important;
+	margin-bottom: 10px !important;
 	pointer-events: none;
+}
+.add-tag-input {
+	border: none;
+	border-bottom: 1px solid;
+	margin-top: 10px;
 }

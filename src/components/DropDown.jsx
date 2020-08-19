@@ -9,28 +9,8 @@ class DropDown extends Component {
 		tagvalue: '',
 	};
 
-	// handleChange = ({ currentTarget: input }) => {
-	// 	const { tag, active, tagvalue } = this.state;
-	// 	// console.log(input.value);
-	// 	let result = input.value;
-
-	// 	console.log(tag);
-	// 	if (active) {
-	// 	}
-	// };
-	// onKeyPress = (e) => {
-	// 	let array = [];
-	// 	if (e.key === 'Enter') {
-	// 		array.push(result);
-	// 		this.state({ tag: array });
-	// 	}
-	// };
-
 	render() {
-		console.log(this.state.active);
-		console.log(this.state.tag);
-		const { student } = this.props;
-		const { tag, active, tagvalue } = this.state;
+		const { student, tag: tags } = this.props;
 		return (
 			<div className='dropdown_data'>
 				<div className='percentage_details'>
@@ -43,25 +23,36 @@ class DropDown extends Component {
 						);
 					})}
 
-					{active &&
-						tag &&
-						tag.map(() => {
+					{tags &&
+						tags.map((item, item_index) => {
 							return (
-								<div className='add-button'>
-									<Button className='add-tag-input'>new tag</Button>
-								</div>
+								item.id === student.id && (
+									<div className='add-button' key={item_index}>
+										{item.tags.map((tag, index) => {
+											return (
+												<Button
+													key={index}
+													className='add-tag-button'
+													style={{ margin: '3px' }}
+												>
+													{tag}
+												</Button>
+											);
+										})}
+									</div>
+								)
 							);
 						})}
 
-					<div className='tag-input-field'>
+					<div className='add-tag-input-filed'>
 						<input
 							type='text'
-							className='form-control'
+							className='form-control add-tag-input'
 							// value='Add a Tag'
 							placeholder='Add a Tag'
-							id='tag-input'
-							onChange={this.handleChange}
-							//onKeyPress={(e) => onKeyPress(e)}
+							id={student.id}
+							onChange={this.props.handleChange}
+							onKeyPress={this.props.handleKeyPress}
 						/>
 					</div>
 				</div>

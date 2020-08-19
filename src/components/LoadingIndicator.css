@@ -1,0 +1,37 @@
+.loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100vh;
+}
+@keyframes example {
+	50% {
+		transform: translateY(35px);
+	}
+}
+
+.loading-ball {
+	width: 26px;
+	height: 26px;
+	border-radius: 13px;
+	background-color: black;
+	margin: 0px 10px;
+}
+
+.loading-purple {
+	background-color: purple;
+	animation: example 2s 0s ease infinite;
+}
+.loading-orange {
+	background-color: orange;
+	animation: example 2s 0.2s ease infinite;
+}
+.loading-green {
+	background-color: green;
+	animation: example 2s 0.4s ease infinite;
+}
+.loading-red {
+	background-color: red;
+	animation: example 2s 0.6s ease infinite;
+}
